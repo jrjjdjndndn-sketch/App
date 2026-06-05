@@ -17,11 +17,11 @@ jobs:
     - name: Unzip Project Files
       run: unzip GeminiAgent.zip
 
-    # 2. إعداد الجافا 17
-    - name: set up JDK 17
+    # 2. إعداد الجافا 21 (مطلوب لـ TargetSdk 35 و Kotlin 2.0.20+)
+    - name: set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
 
     # 3. توليد ملف gradlew بالإصدار المطلوب 8.9 تلقائياً
