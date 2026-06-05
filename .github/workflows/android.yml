@@ -24,7 +24,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # 3. توليد ملف gradlew المفقود تلقائياً داخل مجلد المشروع
+    # 3. توليد ملف gradlew بالإصدار المطلوب 8.9 تلقائياً
     - name: Generate Gradle Wrapper
       run: |
         TARGET_DIR=$(find . -name "build.gradle.kts" -exec dirname {} \; | head -n 1)
@@ -32,7 +32,7 @@ jobs:
           echo "Error: build.gradle.kts not found!" && exit 1
         fi
         cd "$TARGET_DIR"
-        gradle wrapper --gradle-version 8.5
+        gradle wrapper --gradle-version 8.9
         chmod +x ./gradlew
 
     # 4. بناء نسخة الـ APK
