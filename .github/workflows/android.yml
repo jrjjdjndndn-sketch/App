@@ -8,19 +8,34 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: set up JDK 11
+
+    # 1. فك ضغط ملف المشروع الخاص بك
+    - name: Unzip Project Files
+      run: unzip GeminiAgent.zip
+
+    # 2. إعداد الجافا (تم استخدام إصدار 17 الأحدث المناسب لملفات kts)
+    - name: set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
         cache: gradle
 
+    # 3. إعطاء صلاحية التشغيل لملف البناء التلقائي
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    # 4. بناء نسخة الـ APK الفعلية
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew assembleDebug
+
+    # 5. استخراج ملف الـ APK النهائي لتقوم بتحميله على هاتفك
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug-apk
+        path: app/build/outputs/apk/debug/app-debug.apk
