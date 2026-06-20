@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Remix: Remix: Model 7X - NLP Text Analyzer",
+  "description": "A beautiful full-stack text analysis engine powered by Gemini. Analyze, summarize, and extract deep insights from your files or text.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
